@@ -9,6 +9,7 @@ import {
   CLEAR_CONTACTS,
   CLEAR_FILTER,
   CONTACT_ERROR,
+  FILTER_CONTACTS_BY_TYPE,
 } from '../types';
 
 export default (state, action) => {
@@ -67,6 +68,13 @@ export default (state, action) => {
 
           return contact.name.match(regex) || contact.email.match(regex);
         }),
+      };
+    case FILTER_CONTACTS_BY_TYPE:
+      return {
+        ...state,
+        filtered: state.contacts.filter(
+          contact => contact.type === action.payload.toLowerCase(),
+        ),
       };
     case CLEAR_FILTER:
       return {

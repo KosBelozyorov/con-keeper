@@ -26,7 +26,6 @@ const AuthState = props => {
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-  // Load user
   const loadUser = async () => {
     setAuthToken(localStorage.token);
 
@@ -39,7 +38,6 @@ const AuthState = props => {
     }
   };
 
-  // Register user
   const register = async formData => {
     const config = {
       headers: {
@@ -64,7 +62,6 @@ const AuthState = props => {
     }
   };
 
-  // Login User
   const login = async formData => {
     const config = {
       headers: {
@@ -89,10 +86,8 @@ const AuthState = props => {
     }
   };
 
-  // Logout
   const logout = () => dispatch({ type: LOGOUT });
 
-  // Clear errors
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
   return (

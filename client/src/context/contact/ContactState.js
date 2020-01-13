@@ -14,6 +14,7 @@ import {
   CLEAR_CONTACTS,
   CLEAR_FILTER,
   CONTACT_ERROR,
+  FILTER_CONTACTS_BY_TYPE,
 } from '../types';
 
 const ContactState = props => {
@@ -93,6 +94,9 @@ const ContactState = props => {
   const filterContacts = text => {
     dispatch({ type: FILTER_CONTACTS, payload: text });
   };
+  const filterContactsByType = text => {
+    dispatch({ type: FILTER_CONTACTS_BY_TYPE, payload: text });
+  };
 
   const clearFilter = () => {
     dispatch({ type: CLEAR_FILTER });
@@ -112,6 +116,7 @@ const ContactState = props => {
         setCurrent,
         clearCurrent,
         filterContacts,
+        filterContactsByType,
         clearFilter,
         clearContacts,
       }}

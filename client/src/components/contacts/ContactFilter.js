@@ -5,7 +5,12 @@ const ContactFilter = () => {
   const contentContext = useContext(ContactContext);
   const text = useRef('');
 
-  const { filterContacts, clearFilter, filtered } = contentContext;
+  const {
+    filterContacts,
+    filterContactsByType,
+    clearFilter,
+    filtered,
+  } = contentContext;
 
   useEffect(() => {
     if (filtered === null) {
@@ -21,13 +26,32 @@ const ContactFilter = () => {
     }
   };
 
+  const onClick = e => {
+    filterContactsByType(e.target.value);
+  };
+
   return (
     <form>
       <input
         ref={text}
         type="text"
-        placeholder="Filter Contacts..."
+        placeholder="Search by name or email..."
         onChange={onChange}
+      />
+      <h5>Filter contacts by type:</h5>
+      <input
+        type="button"
+        value="Personal"
+        className="btn"
+        onClick={onClick}
+        title="Filter contacts by type 'Personal'"
+      />
+      <input
+        type="button"
+        value="Professional"
+        className="btn"
+        onClick={onClick}
+        title="Filter contacts by type 'Professional'"
       />
       {filtered && (
         <input

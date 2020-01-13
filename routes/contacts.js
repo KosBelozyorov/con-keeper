@@ -1,6 +1,5 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
-// const User = require('../models/User');
 const Contact = require('../models/Contact');
 const auth = require('../middleware/auth');
 
@@ -14,7 +13,6 @@ router.get('/', auth, async (req, res) => {
 
     res.json(contacts);
   } catch (err) {
-    // console.error(500).send('Server Error');
     return res.status(500).send('Server Error');
   }
 });
@@ -51,8 +49,6 @@ router.post(
 
       return res.json(contact);
     } catch (err) {
-      // console.error(err.message);
-
       return res.status(500).send('Server Error');
     }
   },
@@ -98,8 +94,6 @@ router.put('/:id', auth, async (req, res) => {
 
     return res.json(contact);
   } catch (err) {
-    // console.error(err.message);
-
     return res.status(500).send('Server Error');
   }
 });
@@ -120,8 +114,6 @@ router.delete('/:id', auth, async (req, res) => {
 
     return res.json({ msg: 'Contact removed' });
   } catch (err) {
-    // console.error(err.message);
-
     return res.status(500).send('Server Error');
   }
 });
